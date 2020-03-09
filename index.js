@@ -8,12 +8,15 @@ for(var i=0;i<document.querySelectorAll(".drum").length;i++)
         var btnInnerHtml=this.innerHTML;
 
         keySound(btnInnerHtml);
+
+        buttonAnimation(btnInnerHtml);
 });
 }
 
 
 document.addEventListener("keypress",function(event){
     keySound(event.key);
+    buttonAnimation(event.key);
 
 })
 
@@ -51,4 +54,12 @@ function keySound(key)
 
 }
 
+function buttonAnimation(eventKey)
+{
+    var activeButton=document.querySelector("."+eventKey);
+    activeButton.classList.add("pressed");
 
+    setTimeout(function(){
+        activeButton.classList.remove("pressed");
+    },100);
+}
